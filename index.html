@@ -23,17 +23,27 @@
         <h3 id="weather-description"> 
          Partly cloudy
       </h3>
- <div class="description">
-        <span>Wind: </span>
-        <span id="current-wind">
-            mph
+  <div class="row">
+   <div class="col-6">
+        <ul>
+         <li>
+            Wind:  <span id="current-wind"> mph
          </span>
-         <span>
-            Humidity:
-         </span>
-         <span id="current-humidity">
+         </li>
+         <li>
+            Humidity:     
+            <span id="current-humidity">
             %
          </span>
+         </li>
+       <li>
+           Precipitation:     
+            <span id="current-precipitation">
+            %
+         </span>
+         </li>
+         </ul>
+     </div>
  </div>
 <form id="city-form">
     <input type="text"
@@ -51,7 +61,7 @@
 </div>
 </div>
 <script src="index.js"></script>
-<footer>  Coded by 
+<footer>  Open-source code by 
    <a href="https://github.com/nhemmer730/weather-app" target="_blank">
      Nicole Hemmer </a>
    </footer>
