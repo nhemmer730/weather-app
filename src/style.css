@@ -2,11 +2,11 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 }
 h1 {
-color: #878787;
-font-size: 24px;
-font-weight:100;
-line-height: 28px;
-margin-bottom: 0;
+  color: #878787;
+  font-size: 24px;
+  font-weight:100;
+  line-height: 28px;
+   margin-bottom: 0;
 }
 ul{
     margin: 0;
@@ -48,4 +48,12 @@ li {
     position: relative;
     font-size: 16px;
     top: -32px;
+}
+.weather-temperature .active {
+    color: black;
+    cursor: default;
+}
+
+a {
+    text-decoration: none;
 }

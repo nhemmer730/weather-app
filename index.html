@@ -32,26 +32,23 @@
     <h1 id="city"></h1>
     <ul>
       <li> updated: <span id="date"></span></li>
-  <li id="description">
-    clear
-  </li>
+  <li id="description">clear</li>
   </ul>
   </div>
   <div class="row">
 <div class="col-6">
-  <div class="d=flex weather-temperature"><img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" id="icon">
-      <strong id="temperature">35</strong><span class="units">°F | <a href="#">°C </a></span>
+  <div class="d=flex weather-temperature">
+    <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" id="icon">
+      <strong id="temperature">35</strong>
+      <span class="units">
+        <a href="#" id="celsius-link" class="active">°C </a> | 
+        <a href="#" id="fahrenheit-link">°F </a></span>
    </div>
   </div>
 <div class="col-6">
   <ul>
-    <li>
-      Humidity: <span id="humidity"></span>% 
-    </li>
-    <li>
-      Wind: <span id="wind"></span>
-      mph
-    </li>
+    <li>Humidity: <span id="humidity"></span>% </li>
+    <li>Wind: <span id="wind"></span>km/h</li>
   </ul>
   </div>
 </div>
