@@ -56,3 +56,6 @@ li {
 a {
     text-decoration: none;
 }
+#description::first-letter{
+    text-transform: capitalize;
+}
