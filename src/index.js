@@ -12,16 +12,17 @@ function displayForecast(response) {
         `        
         <div class="col-2">
         <div class="weather-forecast-date">${day}</div>
-          <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" />
+          <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png" />
        <div class="weather-forecast-temperatures">
          <span class="weather-forecast-max">18  </span>
-          <span class="weather-forecast-min">  12</span>
+          <span class="weather-forecast-min"> 12  </span>
         </div>
      </div>
       `;
      });
     forecastHTML = forecastHTML + `</div>`;
     forecastElement.innerHTML = forecastHTML;
+    console.log(forecastHTML);
 }
 
 function getForecast(coordinates) {
@@ -53,7 +54,6 @@ function displayTemperature(response) {
     iconElement.setAttribute("alt", response.data.condition.description);
 
     getForecast(response.data.coordinates);
-
 }
 
 function search(city) {
