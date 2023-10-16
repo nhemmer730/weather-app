@@ -1,23 +1,37 @@
-function formatDate(timestamp) {
-    let date = new Date(timestamp);
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-    ];
-    if (minutes < 10) {
-        minutes = `0${minutes}`;
-    }
-    if (hours < 10) {
-        hours = `0${hours}`;
-    }
-    let day = days[date.getDay()];
-    return `${day} ${hours}:${minutes}`
+
+function displayForecast(response) {
+    console.log(response.data.daily);
+    let forecastElement = document.querySelector("#forecast");
+    
+    let forecastHTML = `<div class="row">`;
+    let days = ["Thu", "Fri", "Sat", "Sun"];
+    days.forEach(function (day) {
+    
+    forecastHTML =
+        forecastHTML + 
+        `        
+        <div class="col-2">
+        <div class="weather-forecast-date">${day}</div>
+          <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" />
+       <div class="weather-forecast-temperatures">
+         <span class="weather-forecast-max">18  </span>
+          <span class="weather-forecast-min">  12</span>
+        </div>
+     </div>
+      `;
+     });
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
 }
 
 function getForecast(coordinates) {
     console.log(coordinates);
+    let apiKey = "9faada74e0td93b882032b77odf27ad4";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=9faada74e0td93b882032b77odf27ad4& units=metric`;
+    console.log(apiUrl);
+    axios.get(apiUrl).then(displayForecast);
 }
+
 
 function displayTemperature(response) {
     let temperatureElement = document.querySelector("#temperature");
@@ -35,7 +49,6 @@ function displayTemperature(response) {
     descriptionElement.innerHTML = (response.data.condition.description);
     humidityElement.innerHTML = (response.data.temperature.humidity);
     windElement.innerHTML = Math.round(response.data.wind.speed);
-    dateElement.innerHTML = formatDate(response.data.daily.time / 1000);
     iconElement.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon_url}.png`);
     iconElement.setAttribute("alt", response.data.condition.description);
 
