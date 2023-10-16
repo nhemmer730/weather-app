@@ -1,3 +1,25 @@
+function formatDate(timestamp) {
+    let date = new Date(timestamp);
+    let hours = date.getHours();
+    if (hours < 10) {
+        hours = `0${hours}`;
+    }
+    let minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
+    let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ];
+    let day = days[date.getDay()];
+    return `${day} ${hours}:${minutes}`;
+}
 
 function displayForecast(response) {
     console.log(response.data.daily);
@@ -33,7 +55,6 @@ function getForecast(coordinates) {
     axios.get(apiUrl).then(displayForecast);
 }
 
-
 function displayTemperature(response) {
     let temperatureElement = document.querySelector("#temperature");
     let cityElement = document.querySelector("#city");
@@ -50,7 +71,8 @@ function displayTemperature(response) {
     descriptionElement.innerHTML = (response.data.condition.description);
     humidityElement.innerHTML = (response.data.temperature.humidity);
     windElement.innerHTML = Math.round(response.data.wind.speed);
-    iconElement.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon_url}.png`);
+    dateElement.innerHTML = formatDate(response.data.time / 1000);
+    iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
     iconElement.setAttribute("alt", response.data.condition.description);
 
     getForecast(response.data.coordinates);
@@ -74,7 +96,7 @@ function displayFahrenheitTemperature(event) {
     celsiusLink.classList.remove("active");
     fahrenheitLink.classList.add("active");
     let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-    temperatureElement.innerHTML = Math.round(displayFahrenheitTemperature);
+    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function displayCelsiusTemperature(event) {
