@@ -20,6 +20,19 @@ li {
     font-weight: 100;
     line-height: 19px;
 }
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 45px;
+    height: 45px;
+}
+div.weather-temperature img {
+    margin-bottom: 25px;
+    width: 85px;
+    height: 85px;
+}
 .weather-app-wrapper {
     max-width: 600px;
     margin: 30px auto;
@@ -32,11 +45,7 @@ li {
 .overview{
     margin-bottom: 20px;
 }
-.weather-temperature img {
-    margin-bottom: 6px;
-    height: 88px;
-    width: 88px;
-}
+
 .weather-temperature strong {
     color: rgb(33,33,33);
     font-size: 64px;
@@ -52,11 +61,9 @@ li {
     color: black;
     cursor: default;
 }
-a {
-    text-decoration: none;
-}
+
 #description::first-letter{
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 .weather-forecast-date{
   font-size: 16px;
@@ -66,7 +73,7 @@ a {
     opacity: 0.5;
 }
 .weather-forecast-temperatures{
- font-size: 13px;
+ font-size: 14px;
 }
 #current-location-button {
     background-color:rgb(243, 175, 49) ;

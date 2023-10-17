@@ -56,14 +56,11 @@ function displayForecast(response) {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "9faada74e0td93b882032b77odf27ad4";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -76,9 +73,9 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#weather-icon");
 
-  celsiusTemperature = response.data.temperature.current;
+  let fahrenheitTemperature = response.data.temperature.current;
 
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
@@ -91,7 +88,6 @@ function displayTemperature(response) {
 }
 
 function search(city) {
-  let apiKey = "9faada74e0td93b882032b77odf27ad4";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=9faada74e0td93b882032b77odf27ad4&units=imperial`;
   axios.get(apiUrl).then(displayTemperature);
 }
@@ -102,13 +98,6 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-function getCurrentLocation(response) {
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=9faada74e0td93b882032b77odf27ad4& units=imperial`;
-  let currentLocation = response.coordinates;
-  currentLocation.innerHTML = "#city";
-  axios.get(apiUrl).then(getCurrentLocation);
-}
-
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -117,9 +106,6 @@ function displayFahrenheitTemperature(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let buttonElement = document.querySelector("button");
-buttonElement.addEventListener("click", getCurrentLocation);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
