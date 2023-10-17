@@ -33,9 +33,9 @@ li {
     margin-bottom: 20px;
 }
 .weather-temperature img {
-    vertical-align: top;
-    height: 64px;
-    width: 64px;
+    margin-bottom: 6px;
+    height: 88px;
+    width: 88px;
 }
 .weather-temperature strong {
     color: rgb(33,33,33);
@@ -46,34 +46,30 @@ li {
 .weather-temperature .units {
     position: relative;
     font-size: 16px;
-    top: -32px;
+    top: -34px;
 }
 .weather-temperature .active {
     color: black;
     cursor: default;
 }
-
 a {
     text-decoration: none;
 }
 #description::first-letter{
     text-transform: capitalize;
 }
-
 .weather-forecast-date{
   font-size: 16px;
-  text-align: left;
   opacity: 0.5;
 }
 .weather-forecast-min {
-    opacity: .5;
+    opacity: 0.5;
 }
 .weather-forecast-temperatures{
  font-size: 13px;
-text-align: left;
 }
-#button {
-    background-color:rgb(216, 143, 247) ;
+#current-location-button {
+    background-color:rgb(243, 175, 49) ;
     border: none;
-    color: rgb(214, 222, 248);
+    color: rgb(33,33,33);
 }
